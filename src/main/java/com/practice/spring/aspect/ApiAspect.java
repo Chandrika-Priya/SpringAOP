@@ -7,12 +7,11 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-@Order(2)
-public class LoggingAspect {
+@Order(3)
+public class ApiAspect {
 
     @Before("com.practice.spring.aspect.PointCutExp.forDaoPackageExcludesGetSet()")
-    public void beforeAccount(){
-        System.out.println("executing before add account");
+    public void performAPIAnalysis(){
+        System.out.println("performing api analysis");
     }
-
 }

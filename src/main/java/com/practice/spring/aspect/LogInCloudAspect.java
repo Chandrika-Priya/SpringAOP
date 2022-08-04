@@ -7,12 +7,10 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-@Order(2)
-public class LoggingAspect {
-
+@Order(1)
+public class LogInCloudAspect {
     @Before("com.practice.spring.aspect.PointCutExp.forDaoPackageExcludesGetSet()")
-    public void beforeAccount(){
-        System.out.println("executing before add account");
+    public void logInCloudSync() {
+        System.out.println("performing logging to cloud sync");
     }
-
 }
