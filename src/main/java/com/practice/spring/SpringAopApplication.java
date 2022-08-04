@@ -15,7 +15,7 @@ public class SpringAopApplication {
 		MembershipDao membershipDao = applicationContext.getBean("membershipDao",MembershipDao.class);
 		accountDao.addAccount();
 		Account account = new Account();
-		membershipDao.addAccount(account);
+		membershipDao.addAccount(account,true);
 		applicationContext.close();
 //		SpringApplication.run(SpringAopApplication.class, args);
 	}
