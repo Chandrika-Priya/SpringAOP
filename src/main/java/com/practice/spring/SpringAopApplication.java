@@ -14,7 +14,10 @@ public class SpringAopApplication {
 		AccountDao accountDao = applicationContext.getBean("accountDao",AccountDao.class);
 		MembershipDao membershipDao = applicationContext.getBean("membershipDao",MembershipDao.class);
 		accountDao.addAccount();
-		accountDao.addAmount();
+		accountDao.setName("Hello");
+		accountDao.setEmail("hello@gmail.com");
+		accountDao.getName();
+		accountDao.getEmail();
 		Account account = new Account();
 		membershipDao.addAccount(account,true);
 		applicationContext.close();
