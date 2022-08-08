@@ -19,6 +19,8 @@ public class SpringAopApplication {
 		accountDao.getName();
 		accountDao.getEmail();
 		Account account = new Account();
+		account.setName("hello");
+		account.setLevel("1");
 		membershipDao.addAccount(account,true);
 		applicationContext.close();
 //		SpringApplication.run(SpringAopApplication.class, args);
