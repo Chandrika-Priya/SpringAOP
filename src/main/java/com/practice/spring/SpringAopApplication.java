@@ -18,7 +18,7 @@ public class SpringAopApplication {
         List<Account> accounts = null;
 
         try {
-            accountDao.findAccounts(true);
+            accountDao.findAccounts(false);
         } catch (Exception e) {
             System.out.println("Exception caught in main program " + e);
         }

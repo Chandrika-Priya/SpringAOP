@@ -2,10 +2,7 @@ package com.practice.spring.aspect;
 
 import com.practice.spring.Account;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -16,6 +13,11 @@ import java.util.List;
 @Component
 @Order(2)
 public class LoggingAspect {
+
+    @After("execution(* com.practice.spring.dao.AccountDao.findAccounts(..))")
+    public void afterFinallyFindAccount(JoinPoint joinPoint){
+        System.out.println("Executing after finally ");
+    }
 
     @AfterThrowing(pointcut = "execution(* com.practice.spring.dao.AccountDao.findAccounts(..))", throwing = "exec")
     public void afterThrowingException(JoinPoint joinPoint, Throwable exec) {
