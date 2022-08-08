@@ -2,6 +2,7 @@ package com.practice.spring.aspect;
 
 import com.practice.spring.Account;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
@@ -13,6 +14,16 @@ import java.util.List;
 @Component
 @Order(2)
 public class LoggingAspect {
+
+    @Around("execution(* com.practice.spring.dao.FortuneServiceDao.getFortune())")
+    public Object aroundGetFortune(ProceedingJoinPoint joinPoint) throws Throwable {
+
+        long begin = System.currentTimeMillis();
+        Object object = joinPoint.proceed();
+        long end= System.currentTimeMillis();
+        System.out.println("in around "+(end-begin));
+        return  object;
+    }
 
     @After("execution(* com.practice.spring.dao.AccountDao.findAccounts(..))")
     public void afterFinallyFindAccount(JoinPoint joinPoint){
