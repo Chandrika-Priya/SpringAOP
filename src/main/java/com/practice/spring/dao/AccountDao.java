@@ -1,11 +1,29 @@
 package com.practice.spring.dao;
 
+import com.practice.spring.Account;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class AccountDao {
     private String name;
     private String email;
+
+    public List<Account> findAccounts(){
+        ArrayList<Account> accounts = new ArrayList<>();
+
+        Account account1= new Account("hello1","1");
+        Account account2= new Account("hello2","2");
+        Account account3= new Account("hello3","3");
+
+        accounts.add(account1);
+        accounts.add(account2);
+        accounts.add(account3);
+
+        return accounts;
+    }
 
     public String getName() {
         System.out.println(getClass()+" in getName()\n");
