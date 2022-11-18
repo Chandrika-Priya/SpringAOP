@@ -1,13 +1,8 @@
 package com.practice.spring;
 
-import com.practice.spring.dao.AccountDao;
 import com.practice.spring.dao.FortuneServiceDao;
-import com.practice.spring.dao.MembershipDao;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import java.util.List;
 
 @SpringBootApplication
 public class SpringAopApplication {
@@ -16,7 +11,7 @@ public class SpringAopApplication {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(springAOPconfig.class);
         FortuneServiceDao fortuneServiceDao = applicationContext.getBean("fortuneServiceDao", FortuneServiceDao.class);
         System.out.println("calling from main");
-        fortuneServiceDao.getFortune();
+        String result = fortuneServiceDao.getFortune(true);
         System.out.println("execution of method completed");
 //        AccountDao accountDao = applicationContext.getBean("accountDao", AccountDao.class);
 

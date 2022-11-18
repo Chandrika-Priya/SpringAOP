@@ -17,9 +17,14 @@ public class LoggingAspect {
 
     @Around("execution(* com.practice.spring.dao.FortuneServiceDao.getFortune())")
     public Object aroundGetFortune(ProceedingJoinPoint joinPoint) throws Throwable {
-
         long begin = System.currentTimeMillis();
-        Object object = joinPoint.proceed();
+        Object object = null;
+        try {
+        object = joinPoint.proceed();
+        } catch (Exception exception) {
+            System.out.println("Exception handled");
+            object="Major Accident";
+        }
         long end= System.currentTimeMillis();
         System.out.println("in around "+(end-begin));
         return  object;
